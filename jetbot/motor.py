@@ -31,15 +31,16 @@
 # SOFTWARE.
 #==================================================================================
 import atexit
-import qwiic
+#import qwiic
 from Adafruit_MotorHAT import Adafruit_MotorHAT
 import traitlets
 from traitlets.config.configurable import Configurable
-
+from jetbot.i2c_scan import get_i2c_address
 
 
 # Scan for devices on I2C bus
-addresses = qwiic.scan()
+#addresses = qwiic.scan()
+addresses = get_i2c_address(7)
 
 class Motor(Configurable):
 
@@ -51,8 +52,7 @@ class Motor(Configurable):
     beta = traitlets.Float(default_value=0.0).tag(config=True)
     
     # Adafruit Hardware
-    if 96 in addresses:
-        
+    if 112 in addresses: 
         def __init__(self, driver, channel, *args, **kwargs):
             super(Motor, self).__init__(*args, **kwargs)  # initializes traitlets
 

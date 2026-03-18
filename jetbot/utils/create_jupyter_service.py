@@ -10,7 +10,7 @@ Description=Jupyter Notebook Service
 [Service]
 Type=simple
 User=%s
-ExecStart=/bin/sh -c "jupyter lab --ip=0.0.0.0 --no-browser"
+ExecStart=/bin/sh -c "python3 -m jupyterlab --ip=0.0.0.0 --no-browser"
 WorkingDirectory=%s
 Restart=always
 
