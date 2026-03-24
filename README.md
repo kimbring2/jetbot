@@ -80,7 +80,7 @@ You can connect the Jetbot throguh Juputer Lab through IP assigned to Jetbot. Yo
 
 After connecting to Jupter Lab of Jetbot, please run cell of `basic_motion` Notebook.
 
-![Alt text](/home/kimbring2/jetbot/images/i2c_sensor_verify.png)
+![Alt text](images/i2c_sensor_verify.png)
 
 You should see the same result above. Otherwise, there is some problem in your setting.
 
