@@ -24,26 +24,6 @@ cd jetbot
 sudo python3 setup.py install
 ```
 
-## Enable Dual CSI Camera
-
-1. **Open Terminal** and run:
-   
-   bash
-   
-   ```
-   sudo /opt/nvidia/jetson-io/jetson-io.py
-   ```
-
-2. Select **Configure Jetson CSI camera slot(s)**.
-
-3. Select the camera type (e.g., `imx219 dual` for Waveshare Binocular camera).
-
-4. Save the changes and select **Reboot** to apply settings. 
-
-## Installing OpenCV with Gstreamer
-
-Visit [this Medium post link](https://medium.com/@erencanbulut/step-by-step-build-opencv-with-gstreamer-on-jetson-orin-nano-ubuntu-22-04-08edfb373c78).
-
 ## Register Service
 
 ```
@@ -82,6 +62,54 @@ sudo reboot
 
 ## Checking you did every setting correctly
 
-After 
+After registering services above, you can see the Jetbot's current status from OLED display.
+
+<img src="file:///home/kimbring2/jetbot/images/oled_demo.jpg" title="" alt="Alt text" width="369">
+
+Unlike original Jetbot, it shows the current battery charging status. Please make sure it should be over 14V. Otherwise, you neet to charge the Jetbot.
+
+
+
+You can connect the Jetbot throguh Juputer Lab through IP assigned to Jetbot. You should set the IP address via Desktop GUI if you have never used it before or when registering a new WiFi. Once connected to WiFi, Jetbot will automatically connect to that IP when turned on.
+
+<img src="file:///home/kimbring2/jetbot/images/jupyter_demo.png" title="" alt="Alt text" width="368">
+
+## 
+
+## Verifying I2C Sensor on PCB
+
+After connecting to Jupter Lab of Jetbot, please run cell of `basic_motion` Notebook.
+
+![Alt text](/home/kimbring2/jetbot/images/i2c_sensor_verify.png)
+
+You should see the same result above. Otherwise, there is some problem in your setting.
+
+
+
+## Enable Dual CSI Camera
+
+Jetbot Orin version uses two CSI cameras instead of the existing single CSI camera.
+
+
+
+1. **Open Terminal** and run:
+   
+   bash
+   
+   ```
+   sudo /opt/nvidia/jetson-io/jetson-io.py
+   ```
+
+2. Select **Configure Jetson CSI camera slot(s)**.
+
+3. Select the camera type (e.g., `imx219 dual` for Waveshare Binocular camera).
+
+4. Save the changes and select **Reboot** to apply settings. 
+
+
+
+## Installing OpenCV with Gstreamer
+
+To use CSI camera with OpenCV, you must follow the build method of [this Medium post link](https://medium.com/@erencanbulut/step-by-step-build-opencv-with-gstreamer-on-jetson-orin-nano-ubuntu-22-04-08edfb373c78).
 
 
