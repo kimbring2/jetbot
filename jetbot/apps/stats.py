@@ -16,15 +16,12 @@ from PIL import ImageDraw
 from PIL import ImageFont
 
 
-
 # Scan for devices on I2C bus
 #addresses = qwiic.scan()
 addresses = get_i2c_address(7)
 
 # Initialize Display-----------------------------------------------------------
 # Try to connect to the OLED display module via I2C.
-
-
 def reset_display(disp):
 	# Initiallize Display
 	disp.begin()
@@ -62,7 +59,7 @@ if 60 in addresses:
 
 
 if 65 in addresses:
-	print("65 in addresses")
+	#print("65 in addresses")
 	# Note: Use i2c_bus=7 as confirmed by your i2cdetect scan
 	sensor = INA219(address=0x41, i2c_bus=7)
 		
@@ -84,7 +81,13 @@ while True:
 	bottom = height-padding
 	
 	# Load default font.
-	font = ImageFont.load_default()
+	#font = ImageFont.load_default()
+	
+    # Instead of load_default(), use truetype
+	# Dejavu Sans is usually pre-installed on Jetson/Ubuntu
+	font_path = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
+	font_size = 9 
+	font = ImageFont.truetype(font_path, font_size)
 	
 	# Move left to right keeping track of the current x position for drawing shapes.
 	x = 0
@@ -116,7 +119,7 @@ while True:
 	
 	# Check Resource Usage-----------------------------------------------------
 	# Shell scripts for system monitoring from here : https://unix.stackexchange.com/questions/119126/command-to-display-memory-usage-disk-$
-		
+	
 	# CPU Load
 	cmd = "top -bn1 | grep load | awk '{printf \"%.1f%%\", $(NF-2)}'"
 	CPU = subprocess.check_output(cmd, shell = True )
