@@ -64,7 +64,7 @@ sudo reboot
 
 After registering services above, you can see the Jetbot's current status from OLED display.
 
-<img src="file:///home/kimbring2/jetbot/images/oled_demo.jpg" title="" alt="Alt text" width="369">
+<img title="" src="images/oled_demo.jpg" alt="Alt text" width="369">
 
 Unlike original Jetbot, it shows the current battery charging status. Please make sure it should be over 14V. Otherwise, you neet to charge the Jetbot.
 
@@ -72,7 +72,7 @@ Unlike original Jetbot, it shows the current battery charging status. Please mak
 
 You can connect the Jetbot throguh Juputer Lab through IP assigned to Jetbot. You should set the IP address via Desktop GUI if you have never used it before or when registering a new WiFi. Once connected to WiFi, Jetbot will automatically connect to that IP when turned on.
 
-<img src="file:///home/kimbring2/jetbot/images/jupyter_demo.png" title="" alt="Alt text" width="368">
+<img title="" src="file:///home/kimbring2/jetbot/images/jupyter_demo.png" alt="Alt text" width="368">
 
 ## 
 
