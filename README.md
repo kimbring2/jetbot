@@ -1,28 +1,87 @@
-# JetBot
+# JetBot Orin
+
+## Introduction
 
 <!--[<img src="https://img.shields.io/discord/553852754058280961.svg">](https://discord.gg/Ady6NtF) -->
 
-> Looking for a quick way to get started with JetBot?  Many third party kits are [now available](https://jetbot.org/master/third_party_kits.html)!
+This is a Jetbot that has been modified from an existing Jetson Nano to use the Jetson Orin Nano. It was built for Waveshare's Jetbot.
 
-<img src="../..//wiki/images/jetson-jetbot-illustration_1600x1260.png" height="256">
+## Getting Hardware
 
-JetBot is an open-source robot based on NVIDIA Jetson Nano that is
+You can buy the PCB for this repository from [this link](https://test-bed-robot-for-ai.myshopify.com/products/jetbot-orin?variant=53153578844525).
 
-* **Affordable** - Less than $150 add-on to Jetson Nano
-* **Educational** - Tutorials from basic motion to AI based collision avoidance
-* **Fun!** - Interactively programmed from your web browser
+## Installation Package
 
-Building and using JetBot gives the hands on experience needed to create entirely new AI projects.
+```
+git clone https://github.com/kimbring2/jetbot.git -b jetbot-orin
+```
 
-To get started, read the [JetBot documentation](https://jetbot.org).
+```
+cd jetbot
+```
 
-## Get involved
+```
+sudo python3 setup.py install
+```
 
-We really appreciate any feedback related to JetBot, and also just enjoy seeing what you're working on!  There is a growing community of Jetson Nano and JetBot users.  It's easy to get involved involved...
+## Enable Dual CSI Camera
 
-<!--* Join the [chat server](https://discord.gg/Ady6NtF)-->
-* Ask a question and discuss JetBot related topics on the [JetBot GitHub Discussions](https://github.com/NVIDIA-AI-IOT/jetbot/discussions)
-* Report a bug by [creating an issue](https://github.com/NVIDIA-AI-IOT/jetbot/issues)
-* Share your project or ask a question on the [Jetson Developer Forums](https://devtalk.nvidia.com/default/board/139/jetson-embedded-systems/)
+1. **Open Terminal** and run:
+   
+   bash
+   
+   ```
+   sudo /opt/nvidia/jetson-io/jetson-io.py
+   ```
+
+2. Select **Configure Jetson CSI camera slot(s)**.
+
+3. Select the camera type (e.g., `imx219 dual` for Waveshare Binocular camera).
+
+4. Save the changes and select **Reboot** to apply settings. 
+
+## Installing OpenCV with Gstreamer
+
+Visit [this Medium post link](https://medium.com/@erencanbulut/step-by-step-build-opencv-with-gstreamer-on-jetson-orin-nano-ubuntu-22-04-08edfb373c78).
+
+## Register Service
+
+```
+cd jetbot/utils
+```
+
+```
+python create_jupyter_service.py
+python create_stats_service.py
+```
+
+```
+sudo cp jetbot_stats.service /etc/systemd/system/
+sudo cp jetbot_jupyter.service /etc/systemd/system/
+```
+
+```
+sudo chown root:root /etc/systemd/system/jetbot_stats.service
+sudo chown root:root /etc/systemd/system/jetbot_jupyter.service
+
+sudo chmod 644 /etc/systemd/system/jetbot_stats.service
+sudo chmod 644 /etc/systemd/system/jetbot_jupyter.service
+```
+
+```
+sudo systemctl daemon-reload
+
+sudo systemctl enable jetbot_stats.service
+sudo systemctl enable jetbot_jupyter.service
+
+sudo systemctl start jetbot_stats.service
+sudo systemctl start jetbot_jupyter.service
+
+sudo reboot
+```
+
+## Checking you did every setting correctly
+
+After 
 
 
