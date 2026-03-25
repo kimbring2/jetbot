@@ -92,9 +92,9 @@ class Robot(SingletonConfigurable):
             left_pwm = -self.left_motor.value  # Convert back to positive for forward
             right_pwm = self.right_motor.value
 
-            print("left_pwm: ", left_pwm)
-            print("right_pwm: ", right_pwm)
-            print("")
+            #print("left_pwm: ", left_pwm)
+            #print("right_pwm: ", right_pwm)
+            #print("")
             
             # This is the real-world equivalent of root_com_lin_vel_b[:,0]
             forward_speed = ((left_pwm + right_pwm) / 2.0) * K_v
