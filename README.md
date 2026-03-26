@@ -68,11 +68,9 @@ After registering services above, you can see the Jetbot's current status from O
 
 Unlike original Jetbot, it shows the current battery charging status. Please make sure it should be over 14V. Otherwise, you neet to charge the Jetbot.
 
-
-
 You can connect the Jetbot throguh Juputer Lab through IP assigned to Jetbot. You should set the IP address via Desktop GUI if you have never used it before or when registering a new WiFi. Once connected to WiFi, Jetbot will automatically connect to that IP when turned on.
 
-<img title="" src="images/jupyter_demo.png" alt="Alt text" width="368">
+<img title="" src="file:///home/kimbring2/jetbot/images/jupyter_demo.png" alt="Alt text" width="368">
 
 ## 
 
@@ -84,13 +82,9 @@ After connecting to Jupter Lab of Jetbot, please run cell of `basic_motion` Note
 
 You should see the same result above. Otherwise, there is some problem in your setting.
 
-
-
 ## Enable Dual CSI Camera
 
 Jetbot Orin version uses two CSI cameras instead of the existing single CSI camera.
-
-
 
 1. **Open Terminal** and run:
    
@@ -106,10 +100,6 @@ Jetbot Orin version uses two CSI cameras instead of the existing single CSI came
 
 4. Save the changes and select **Reboot** to apply settings. 
 
-
-
 ## Installing OpenCV with Gstreamer
 
 To use CSI camera with OpenCV, you must follow the build method of [this Medium post link](https://medium.com/@erencanbulut/step-by-step-build-opencv-with-gstreamer-on-jetson-orin-nano-ubuntu-22-04-08edfb373c78).
-
-
