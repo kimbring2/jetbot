@@ -61,50 +61,53 @@ class Robot(SingletonConfigurable):
             self.motor_driver = Adafruit_MotorHAT(addr=112, i2c_bus=self.i2c_bus)
             self.left_motor = Motor(self.motor_driver, channel=self.left_motor_channel, alpha=self.left_motor_alpha)
             self.right_motor = Motor(self.motor_driver, channel=self.right_motor_channel, alpha=self.right_motor_alpha)
+
+            self.left_motor_calibration = kwargs['left_motor_calibration']
+            self.right_motor_calibration = kwargs['right_motor_calibration']
+
+            #print("self.left_motor_calibration: ", self.left_motor_calibration)
+            #print("self.right_motor_calibration: ", self.right_motor_calibration)
             
         def set_motors(self, left_speed, right_speed):
-            self.left_motor.value = -left_speed
-            self.right_motor.value = right_speed
+            left_speed_calibrated = left_speed + self.left_motor_calibration
+            right_speed_calibrated = right_speed + self.right_motor_calibration
+            
+            self.left_motor.value = left_speed_calibrated
+            self.right_motor.value = right_speed_calibrated
             
         def forward(self, speed=1.0, duration=None):
-            self.left_motor.value = -speed
-            self.right_motor.value = speed
+            left_speed_calibrated = speed + self.left_motor_calibration
+            right_speed_calibrated = speed + self.right_motor_calibration
+            
+            self.left_motor.value = -left_speed_calibrated
+            self.right_motor.value = -right_speed_calibrated
 
         def backward(self, speed=1.0):
-            self.left_motor.value = speed
-            self.right_motor.value = -speed
+            left_speed_calibrated = speed + self.left_motor_calibration
+            right_speed_calibrated = speed + self.right_motor_calibration
+            
+            self.left_motor.value = left_speed_calibrated
+            self.right_motor.value = right_speed_calibrated
 
         def left(self, speed=1.0):
-            self.left_motor.value = speed
-            self.right_motor.value = speed
+            left_speed_calibrated = speed + self.left_motor_calibration
+            right_speed_calibrated = speed + self.right_motor_calibration
+            
+            self.left_motor.value = left_speed_calibrated
+            self.right_motor.value = -right_speed_calibrated
 
         def right(self, speed=1.0):
-            self.left_motor.value = -speed
-            self.right_motor.value = -speed
+            left_speed_calibrated = speed + self.left_motor_calibration
+            right_speed_calibrated = speed + self.right_motor_calibration
+            
+            self.left_motor.value = -left_speed_calibrated
+            self.right_motor.value = right_speed_calibrated
 
         def stop(self):
             self.left_motor.value = 0
             self.right_motor.value = 0
-
-        def get_forward_speed(self, K_v=0.65):
-            # 'forward' in your class uses -left and +right
-            # We normalize these to get the net forward component
-            left_pwm = -self.left_motor.value  # Convert back to positive for forward
-            right_pwm = self.right_motor.value
-
-            #print("left_pwm: ", left_pwm)
-            #print("right_pwm: ", right_pwm)
-            #print("")
-            
-            # This is the real-world equivalent of root_com_lin_vel_b[:,0]
-            forward_speed = ((left_pwm + right_pwm) / 2.0) * K_v
-            
-            return forward_speed
-            
-
     # SparkFun Hardware
     elif 93 in addresses:
-                
         def __init__(self, *args, **kwargs):
             super(Robot, self).__init__(*args, **kwargs)
             
