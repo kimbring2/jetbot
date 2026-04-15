@@ -29,6 +29,7 @@ sudo apt-get install python3-setuptools
 sudo apt-get install python3.10-venv
 sudo apt update && sudo apt install python3-pip
 python3 -m pip install jupyterlab
+pip install Adafruit_GPIO
 ```
 
 ## Register Service
