@@ -62,8 +62,14 @@ class Robot(SingletonConfigurable):
             self.left_motor = Motor(self.motor_driver, channel=self.left_motor_channel, alpha=self.left_motor_alpha)
             self.right_motor = Motor(self.motor_driver, channel=self.right_motor_channel, alpha=self.right_motor_alpha)
 
-            self.left_motor_calibration = kwargs['left_motor_calibration']
-            self.right_motor_calibration = kwargs['right_motor_calibration']
+            self.left_motor_calibration = 0.0
+            self.right_motor_calibration = 0.0
+            
+            if 'left_motor_calibration' in kwargs:
+                self.left_motor_calibration = kwargs['left_motor_calibration']
+
+            if 'right_motor_calibration' in kwargs:
+                self.right_motor_calibration = kwargs['right_motor_calibration']
 
             #print("self.left_motor_calibration: ", self.left_motor_calibration)
             #print("self.right_motor_calibration: ", self.right_motor_calibration)
@@ -154,3 +160,4 @@ class Robot(SingletonConfigurable):
             self.motor_driver.set_drive(0, 0, 0)
             self.motor_driver.set_drive(1, 1, 0)
             self.motor_driver.disable()
+
