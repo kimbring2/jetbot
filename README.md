@@ -24,6 +24,13 @@ cd jetbot
 sudo python3 setup.py install
 ```
 
+```
+sudo apt-get install python3-setuptools
+sudo apt-get install python3.10-venv
+sudo apt update && sudo apt install python3-pip
+python3 -m pip install jupyterlab
+```
+
 ## Register Service
 
 ```
