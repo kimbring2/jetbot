@@ -10,7 +10,7 @@ This is a Jetbot that has been modified from an existing Jetson Nano to use the 
 
 - [NVIDIA Jetson Orin Nano Super Developer Kit](https://www.amazon.com/NVIDIA-Jetson-Orin-Nano-Developer/dp/B0BZJTQ5YP/ref=sr_1_1?dib=eyJ2IjoiMSJ9.EY0iLDd0M9dkGkWsLUJY8AUMTKs63_fI_v1UtmDOFxCeIl6JgEjjfAzyvqkCtigD7GjQMqsx074mMj8kSaZW_6Fj56fSmmgrnWik3WiLiXBr7x_bqMdkXBhnoOK_fu6dZd-kVM8TydffGfB0vqHxEHuwDn0qiuNJn6vQ4-J2dDQYL9rd4edsv-f9A_qWu-zdjw1NzzS1xLTQBuP4qjMuVOa0tHsoaFlhqDk7gdnuLNI.EwUOl1wWJ_QEa3xWEl_QypZzTs2enqerw7Sv1JCuMVY&dib_tag=se&keywords=nvidia%2Bjetson%2Borin&qid=1776615465&sr=8-1&th=1)
 
-- [Jetbot Orin Kit](https://test-bed-robot-for-ai.myshopify.com/products/jetbot-orin?variant=53153578844525).
+- [Jetbot Orin Kit](https://test-bed-robot-for-ai.myshopify.com/products/jetbot-orin?variant=53153578844525)
 
 ## JetPack Version
 
